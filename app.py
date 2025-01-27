@@ -21,10 +21,10 @@ def home():
     search_text = request.args.get("searchlaukelis")
     if search_text:
         filtered_rows = Projektas.query.filter(Projektas.pavadinimas.ilike(f"{search_text}%"))
-        return render_template("index_css.html", projects=filtered_rows)
+        return render_template("index.html", projects=filtered_rows)
     else:
         all_projects = Projektas.query.all()
-        return render_template("index_css.html", projects=all_projects)
+        return render_template("index.html", projects=all_projects)
 
 
 @app.route("/projektas/<int:row_id>")
